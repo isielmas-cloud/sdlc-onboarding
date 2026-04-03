@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering 101 — SDLC for Sales</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <img class="brand-mark-img" src="assets/brand-mark.svg" width="40" height="40" alt="" />
+          <div>
+            <h1 id="app-title">Engineering 101</h1>
+            <p class="tagline">SDLC &amp; tools — explained for non-developers</p>
+          </div>
+        </div>
+        <nav class="primary-nav" aria-label="Main sections">
+          <button type="button" class="nav-pill is-active" data-view="welcome">Start</button>
+          <button type="button" class="nav-pill" data-view="basics">Dev basics</button>
+          <button type="button" class="nav-pill" data-view="tech">Tools Developers use</button>
+          <button type="button" class="nav-pill" data-view="competitors">AI rivals</button>
+          <button type="button" class="nav-pill" data-view="sdlc">SDLC journey</button>
+        </nav>
+        <nav class="header-actions" aria-label="Reference">
+          <button type="button" class="btn btn-ghost" id="btn-glossary" aria-expanded="false">Glossary</button>
+          <button type="button" class="btn btn-ghost" id="btn-approaches" aria-expanded="false">Approaches</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Welcome -->
+      <section class="view view-welcome" id="view-welcome" aria-labelledby="welcome-heading">
+        <div class="welcome-split">
+          <div class="welcome-hero">
+            <p class="welcome-eyebrow">Cursor · Sales enablement</p>
+            <h2 id="welcome-heading" class="welcome-headline"></h2>
+            <p class="welcome-sub" id="welcome-sub"></p>
+            <ul class="welcome-bullets" id="welcome-bullets"></ul>
+            <div class="welcome-actions">
+              <button type="button" class="btn btn-primary" id="btn-welcome-basics">Begin with dev basics →</button>
+              <button type="button" class="btn btn-ghost" id="btn-welcome-sdlc">Skip to SDLC journey</button>
+            </div>
+            <p class="callout callout-muted" id="welcome-customize"></p>
+          </div>
+          <div class="welcome-visual" aria-hidden="true">
+            <div class="hero-glow"></div>
+            <img
+              class="hero-art"
+              src="assets/hero-workspace.svg"
+              width="520"
+              height="400"
+              alt=""
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Basics -->
+      <section class="view view-basics" id="view-basics" hidden aria-labelledby="basics-heading">
+        <div class="page-header-row">
+          <div class="page-header-copy">
+            <h2 id="basics-heading" class="page-title">Development basics</h2>
+            <p class="page-lead">
+              Words you’ll hear on calls with engineering. Each card uses a non-technical analogy first, then a short
+              explanation.
+            </p>
+          </div>
+          <img class="page-decor" src="assets/decor-basics.svg" width="200" height="160" alt="" decoding="async" />
+        </div>
+        <div class="basics-grid" id="basics-grid"></div>
+        <p class="view-footer-nav">
+          <button type="button" class="btn btn-text" data-view-nav="welcome">← Back to start</button>
+          <button type="button" class="btn btn-primary" data-view-nav="tech">Next: Tools Developers use →</button>
+        </p>
+      </section>
+
+      <!-- Tech catalog -->
+      <section class="view view-tech" id="view-tech" hidden aria-labelledby="tech-heading">
+        <div class="page-header-row">
+          <div class="page-header-copy">
+            <h2 id="tech-heading" class="page-title">Example technology map</h2>
+            <p class="page-lead">
+              Sample vendors and roles — swap for your company’s real stack in
+              <code class="inline-code">data.js</code>. The SDLC section maps these into each phase.
+            </p>
+          </div>
+          <img class="page-decor" src="assets/decor-stack.svg" width="200" height="160" alt="" decoding="async" />
+        </div>
+        <div class="table-wrap">
+          <table class="tech-table" id="tech-table">
+            <caption class="visually-hidden">Vendors and what they do</caption>
+            <thead>
+              <tr>
+                <th scope="col">Vendor</th>
+                <th scope="col">Category</th>
+                <th scope="col">In simple words</th>
+              </tr>
+            </thead>
+            <tbody id="tech-table-body"></tbody>
+          </table>
+        </div>
+        <p class="view-footer-nav">
+          <button type="button" class="btn btn-text" data-view-nav="basics">← Dev basics</button>
+          <button type="button" class="btn btn-primary" data-view-nav="competitors">Next: AI rivals →</button>
+        </p>
+      </section>
+
+      <!-- Competitors -->
+      <section class="view view-competitors" id="view-competitors" hidden aria-labelledby="competitors-heading">
+        <div class="page-header-row page-header-row--flip">
+          <img class="page-decor" src="assets/decor-rivals.svg" width="200" height="160" alt="" decoding="async" />
+          <div class="page-header-copy">
+            <h2 id="competitors-heading" class="page-title"></h2>
+            <p class="page-lead" id="competitors-lead"></p>
+            <p class="page-lead-sub" id="gtm-audience"></p>
+            <p class="source-line" id="competitors-source"></p>
+          </div>
+        </div>
+
+        <div class="gtm-block" id="gtm-good-avoid-wrap" hidden>
+          <h3 class="gtm-subtitle">What good looks like</h3>
+          <div class="good-avoid-table" id="gtm-good-avoid"></div>
+        </div>
+
+        <div class="gtm-block" id="gtm-pillars-wrap" hidden>
+          <h3 class="gtm-subtitle">Cursor’s core differentiators</h3>
+          <div class="pillars-grid" id="gtm-pillars"></div>
+          <p class="callout callout-warn" id="gtm-monorepo" hidden></p>
+        </div>
+
+        <div class="gtm-two-col" id="gtm-proof-traps-wrap" hidden>
+          <div class="gtm-subblock">
+            <h3 class="gtm-subtitle">Proof points</h3>
+            <ul class="proof-list" id="gtm-proof-points"></ul>
+          </div>
+          <div class="gtm-subblock gtm-traps">
+            <h3 class="gtm-subtitle">Traps to avoid (sales)</h3>
+            <ul class="traps-list" id="gtm-sales-traps"></ul>
+          </div>
+        </div>
+
+        <div class="gtm-block" id="gtm-customers-wrap" hidden>
+          <h3 class="gtm-subtitle">Customer stories (talk tracks)</h3>
+          <div class="customer-stories" id="gtm-customer-stories"></div>
+        </div>
+
+        <h3 class="gtm-subtitle section-competitors-title">Competitor deep-dives</h3>
+        <p class="section-competitors-lead" id="competitors-cards-lead"></p>
+        <div class="competitors-catalog" id="competitors-catalog" aria-label="Cursor competitors"></div>
+        <p class="view-footer-nav">
+          <button type="button" class="btn btn-text" data-view-nav="tech">← Tools Developers use</button>
+          <button type="button" class="btn btn-primary" data-view-nav="sdlc">Next: SDLC journey →</button>
+        </p>
+      </section>
+
+      <!-- SDLC -->
+      <section class="view view-sdlc" id="view-sdlc" hidden aria-labelledby="flow-heading">
+        <h2 id="flow-heading" class="page-title">The SDLC journey</h2>
+        <p class="page-lead">
+          Click a step. You’ll see the story in plain language, which tools from the map show up here, how they connect,
+          and how to contrast our approach with common alternatives.
+        </p>
+
+        <div class="flow-wrapper">
+          <ol class="flow-chart" id="flow-chart" role="list"></ol>
+        </div>
+
+        <section class="detail-panel" id="detail-panel" aria-live="polite" hidden>
+          <div class="detail-header">
+            <h3 id="detail-title"></h3>
+            <p id="detail-summary" class="detail-summary"></p>
+            <div class="tech-chips" id="detail-tech-chips" aria-label="Tools used in this phase"></div>
+          </div>
+          <div class="detail-tabs" role="tablist" aria-label="Phase details">
+            <button type="button" role="tab" id="tab-story" aria-selected="true" aria-controls="panel-story" class="tab is-active">Story</button>
+            <button type="button" role="tab" id="tab-tech" aria-selected="false" aria-controls="panel-tech" class="tab">Tools here</button>
+            <button type="button" role="tab" id="tab-connect" aria-selected="false" aria-controls="panel-connect" class="tab">How they connect</button>
+            <button type="button" role="tab" id="tab-compare" aria-selected="false" aria-controls="panel-compare" class="tab">Vs alternatives</button>
+            <button type="button" role="tab" id="tab-rivals" aria-selected="false" aria-controls="panel-rivals" class="tab">AI rivals</button>
+            <button type="button" role="tab" id="tab-challenges" aria-selected="false" aria-controls="panel-challenges" class="tab">Reality check</button>
+            <button type="button" role="tab" id="tab-cursor" aria-selected="false" aria-controls="panel-cursor" class="tab">Cursor platform</button>
+          </div>
+          <div class="tab-panels">
+            <div role="tabpanel" id="panel-story" aria-labelledby="tab-story" class="tab-panel is-visible"></div>
+            <div role="tabpanel" id="panel-tech" aria-labelledby="tab-tech" class="tab-panel" hidden></div>
+            <div role="tabpanel" id="panel-connect" aria-labelledby="tab-connect" class="tab-panel" hidden></div>
+            <div role="tabpanel" id="panel-compare" aria-labelledby="tab-compare" class="tab-panel" hidden></div>
+            <div role="tabpanel" id="panel-rivals" aria-labelledby="tab-rivals" class="tab-panel" hidden></div>
+            <div role="tabpanel" id="panel-challenges" aria-labelledby="tab-challenges" class="tab-panel" hidden></div>
+            <div role="tabpanel" id="panel-cursor" aria-labelledby="tab-cursor" class="tab-panel" hidden></div>
+          </div>
+        </section>
+
+        <p class="view-footer-nav">
+          <button type="button" class="btn btn-text" data-view-nav="competitors">← AI rivals</button>
+          <button type="button" class="btn btn-text" data-view-nav="welcome">Back to start</button>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Training use only — align stories with your solutions architects before customer-facing claims.</p>
+      <p class="footer-style-note">
+        UI styling is inspired by Cursor’s product aesthetic. Illustrations and marks here are custom — not official Cursor brand assets.
+      </p>
+    </footer>
+
+    <div class="drawer-overlay" id="glossary-overlay" hidden></div>
+    <aside class="drawer" id="drawer-glossary" aria-hidden="true" hidden>
+      <div class="drawer-header">
+        <h2>Glossary</h2>
+        <button type="button" class="btn btn-icon" id="close-glossary" aria-label="Close glossary">×</button>
+      </div>
+      <div class="drawer-body" id="glossary-body"></div>
+    </aside>
+
+    <div class="drawer-overlay" id="approaches-overlay" hidden></div>
+    <aside class="drawer drawer-wide" id="drawer-approaches" aria-hidden="true" hidden>
+      <div class="drawer-header">
+        <h2>How teams run projects</h2>
+        <button type="button" class="btn btn-icon" id="close-approaches" aria-label="Close approaches">×</button>
+      </div>
+      <div class="drawer-body" id="approaches-body"></div>
+    </aside>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
