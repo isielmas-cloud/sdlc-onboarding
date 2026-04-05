@@ -8,12 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="app">
+    <div class="app-backdrop" aria-hidden="true"></div>
+    <div class="app-grid" aria-hidden="true"></div>
+
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
@@ -27,6 +30,7 @@
         <nav class="primary-nav" aria-label="Main sections">
           <button type="button" class="nav-pill is-active" data-view="welcome">Start</button>
           <button type="button" class="nav-pill" data-view="basics">Dev basics</button>
+          <button type="button" class="nav-pill" data-view="personas">Team roles</button>
           <button type="button" class="nav-pill" data-view="tech">Tools Developers use</button>
           <button type="button" class="nav-pill" data-view="competitors">AI rivals</button>
           <button type="button" class="nav-pill" data-view="sdlc">SDLC journey</button>
@@ -38,7 +42,7 @@
       </div>
     </header>
 
-    <main id="main">
+    <main id="main" class="main-shell">
       <!-- Welcome -->
       <section class="view view-welcome" id="view-welcome" aria-labelledby="welcome-heading">
         <div class="welcome-split">
@@ -82,6 +86,24 @@
         <div class="basics-grid" id="basics-grid"></div>
         <p class="view-footer-nav">
           <button type="button" class="btn btn-text" data-view-nav="welcome">← Back to start</button>
+          <button type="button" class="btn btn-primary" data-view-nav="personas">Next: Team roles →</button>
+        </p>
+      </section>
+
+      <!-- Team personas -->
+      <section class="view view-personas" id="view-personas" hidden aria-labelledby="personas-heading">
+        <div class="page-header-row">
+          <div class="page-header-copy">
+            <p class="personas-eyebrow">Personas</p>
+            <h2 id="personas-heading" class="page-title">Who builds software?</h2>
+            <p class="page-lead" id="personas-lead">
+              Typical roles on a software team (personas). Your company may use different titles — the work is what matters.
+            </p>
+          </div>
+        </div>
+        <div class="personas-grid" id="personas-grid"></div>
+        <p class="view-footer-nav">
+          <button type="button" class="btn btn-text" data-view-nav="basics">← Dev basics</button>
           <button type="button" class="btn btn-primary" data-view-nav="tech">Next: Tools Developers use →</button>
         </p>
       </section>
@@ -112,7 +134,7 @@
           </table>
         </div>
         <p class="view-footer-nav">
-          <button type="button" class="btn btn-text" data-view-nav="basics">← Dev basics</button>
+          <button type="button" class="btn btn-text" data-view-nav="personas">← Team roles</button>
           <button type="button" class="btn btn-primary" data-view-nav="competitors">Next: AI rivals →</button>
         </p>
       </section>
@@ -167,23 +189,25 @@
 
       <!-- SDLC -->
       <section class="view view-sdlc" id="view-sdlc" hidden aria-labelledby="flow-heading">
-        <h2 id="flow-heading" class="page-title">The SDLC journey</h2>
-        <p class="page-lead">
-          Click a step. You’ll see the story in plain language, which tools from the map show up here, how they connect,
-          and how to contrast our approach with common alternatives.
-        </p>
+        <header class="sdlc-header">
+          <h2 id="flow-heading" class="page-title">The SDLC journey</h2>
+          <p class="page-lead sdlc-lead">
+            Click a step. You’ll see the story in plain language, which tools from the map show up here, how they connect,
+            and how to contrast our approach with common alternatives.
+          </p>
+        </header>
 
-        <div class="flow-wrapper">
+        <div class="flow-wrapper flow-wrapper--sdlc">
           <ol class="flow-chart" id="flow-chart" role="list"></ol>
         </div>
 
-        <section class="detail-panel" id="detail-panel" aria-live="polite" hidden>
+        <section class="detail-panel sdlc-detail" id="detail-panel" aria-live="polite" hidden>
           <div class="detail-header">
             <h3 id="detail-title"></h3>
             <p id="detail-summary" class="detail-summary"></p>
             <div class="tech-chips" id="detail-tech-chips" aria-label="Tools used in this phase"></div>
           </div>
-          <div class="detail-tabs" role="tablist" aria-label="Phase details">
+          <div class="detail-tabs detail-tabs--sdlc" role="tablist" aria-label="Phase details">
             <button type="button" role="tab" id="tab-story" aria-selected="true" aria-controls="panel-story" class="tab is-active">Story</button>
             <button type="button" role="tab" id="tab-tech" aria-selected="false" aria-controls="panel-tech" class="tab">Tools here</button>
             <button type="button" role="tab" id="tab-connect" aria-selected="false" aria-controls="panel-connect" class="tab">How they connect</button>
@@ -203,7 +227,7 @@
           </div>
         </section>
 
-        <p class="view-footer-nav">
+        <p class="view-footer-nav view-footer-nav--sdlc">
           <button type="button" class="btn btn-text" data-view-nav="competitors">← AI rivals</button>
           <button type="button" class="btn btn-text" data-view-nav="welcome">Back to start</button>
         </p>

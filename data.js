@@ -10,6 +10,7 @@ window.SDLC_DATA = {
       "This short guide is for people who sell or support products that involve software. No coding background required.",
     bullets: [
       "Start with everyday explanations of words engineers use (IDE, CLI, API, and more).",
+      "Meet the key roles on a software team — who does what in plain language.",
       "See a sample “stack”: who makes the tools and what each one is for.",
       "Review Cursor’s main AI-coding competitors — strengths, limits, and where they matter in the SDLC.",
       "Walk the SDLC flow and see which tools show up in each step, how they plug together, and how to talk about alternatives.",
@@ -89,6 +90,15 @@ window.SDLC_DATA = {
       lines: [
         "Frontend: buttons, pages, mobile screens — what customers touch.",
         "Backend: databases, business rules, permissions — where the real work happens.",
+      ],
+    },
+    {
+      term: "Database",
+      title: "Where persistent data lives",
+      analogy: "Think: the filing system under the app — not the buttons, but the records you save and query.",
+      lines: [
+        "Relational databases (e.g. PostgreSQL) use tables and SQL; document databases (e.g. MongoDB) store flexible JSON-like records.",
+        "In-memory stores like Redis often sit in front for speed (cache, sessions, queues) while the source of truth stays in a primary database.",
       ],
     },
     {
@@ -181,6 +191,170 @@ window.SDLC_DATA = {
       category: "On-call & incidents",
       simple: "Pages the right engineer when something breaks and tracks the incident timeline.",
     },
+    {
+      id: "vercel",
+      vendor: "Vercel",
+      category: "Hosting & edge deployment",
+      simple: "Deploys web apps and serverless functions with preview URLs per branch — strong fit for frontend and JAMstack teams.",
+    },
+    {
+      id: "postgresql",
+      vendor: "PostgreSQL",
+      category: "Relational database",
+      simple: "Industry-standard SQL database for structured data; often managed in the cloud (RDS, Cloud SQL, Neon, etc.).",
+    },
+    {
+      id: "mongodb",
+      vendor: "MongoDB",
+      category: "Document database",
+      simple: "Stores flexible, JSON-like documents — common when schemas evolve quickly or content is semi-structured.",
+    },
+    {
+      id: "redis",
+      vendor: "Redis",
+      category: "Cache & real-time data",
+      simple: "In-memory store for sessions, caching, rate limits, and job queues — fast layer in front of slower systems.",
+    },
+    {
+      id: "supabase",
+      vendor: "Supabase",
+      category: "Backend-as-a-service",
+      simple: "Managed Postgres plus auth, APIs, and realtime — speeds up product teams that want a full stack without building everything from scratch.",
+    },
+    {
+      id: "jira",
+      vendor: "Jira",
+      category: "Work tracking (enterprise-style)",
+      simple: "Tracks epics, stories, and bugs — very common in larger orgs; similar job to Linear, often heavier process and reporting.",
+    },
+    {
+      id: "azure-devops",
+      vendor: "Azure DevOps",
+      category: "Work tracking & delivery (Microsoft)",
+      simple: "Boards, repos, pipelines, and tests in one Microsoft-centric suite — typical when the company is already on Azure.",
+    },
+    {
+      id: "kubernetes",
+      vendor: "Kubernetes (EKS / GKE / AKS)",
+      category: "Container orchestration",
+      simple: "Runs many copies of your app across machines and restarts them if they fail — the standard for large-scale, cloud-native teams (Amazon/Google/Microsoft managed flavors).",
+    },
+    {
+      id: "snowflake",
+      vendor: "Snowflake",
+      category: "Cloud data warehouse",
+      simple: "A central place to store and analyze huge amounts of business data — think spreadsheets at warehouse scale, for analytics and reporting.",
+    },
+    {
+      id: "bigquery",
+      vendor: "Google BigQuery",
+      category: "Cloud data warehouse",
+      simple: "Google’s analytics database for SQL over massive datasets — common when teams live in Google Cloud or need fast reporting.",
+    },
+    {
+      id: "snyk",
+      vendor: "Snyk",
+      category: "Application security (dependencies & code)",
+      simple: "Scans open-source libraries and sometimes code for known vulnerabilities — like a spell-check for security issues before they reach production.",
+    },
+    {
+      id: "wiz",
+      vendor: "Wiz",
+      category: "Cloud security posture",
+      simple: "Maps what’s running in the cloud, misconfigurations, and risky exposure — helps security teams see the big picture across accounts and services.",
+    },
+  ],
+
+  /**
+   * Key engineering personas — shown on the “Team roles” page (easy words for sales).
+   */
+  personasPage: {
+    title: "Who builds software? (key personas)",
+    lead:
+      "Personas are shorthand for the kinds of people on a dev team — not names, but roles. Titles differ by company, but the jobs below show up everywhere. Use this to map who cares about what on a deal.",
+  },
+
+  devPersonas: [
+    {
+      title: "Product manager (PM)",
+      role: "Owns the “what” and “why”",
+      simple:
+        "Turns customer problems into a roadmap and clear requirements. Prioritizes the backlog so engineering doesn’t build the wrong thing first.",
+      whatMatters:
+        "Clear priorities, realistic dates, and proof that engineering understood the customer — without endless back-and-forth.",
+      cursorHelps:
+        "Draft or sharpen user stories and acceptance criteria from rough notes; use Chat with @-context on tickets or docs so proposals match how the product actually works — always reviewed before commitments.",
+    },
+    {
+      title: "Engineering manager / Tech lead",
+      role: "Owns people and delivery",
+      simple:
+        "Hires and supports developers, helps with estimates and timelines, and removes blockers. On smaller teams, may still write code or own architecture direction.",
+      whatMatters:
+        "Predictable delivery, code quality, and reducing onboarding time when the team or codebase grows.",
+      cursorHelps:
+        "Faster ramp on unfamiliar areas (Chat explains modules and history); Composer and Agent for larger refactors with review; Rules align the team on standards so AI suggestions stay consistent.",
+    },
+    {
+      title: "Software engineer",
+      role: "Builds the product",
+      simple:
+        "Writes and maintains application code, reviews teammates’ changes, and fixes bugs. The role sales often pictures when they say “engineering.”",
+      whatMatters:
+        "Shipping correct features quickly, understanding legacy code, and keeping review + CI green.",
+      cursorHelps:
+        "Tab for speed on boilerplate; Chat and Composer for navigation and multi-file changes; Background Agent for longer tasks; Bugbot on PRs where enabled — humans still own merge decisions.",
+    },
+    {
+      title: "UX / Product designer",
+      role: "Owns how it feels and flows",
+      simple:
+        "Designs screens, flows, and accessibility so the product is understandable and pleasant to use — works closely with PM and engineering before code ships.",
+      whatMatters:
+        "Designs that survive implementation — spacing, states, and accessibility actually match what ships.",
+      cursorHelps:
+        "Bridge design and code: Chat with MCP (e.g. Figma) or specs in context; faster handoff experiments and copy tweaks in the IDE without waiting for a dev slot for every small change.",
+    },
+    {
+      title: "QA / Test engineer",
+      role: "Proves quality before release",
+      simple:
+        "Designs tests (manual or automated), finds edge cases, and signs off that features meet acceptance criteria — reduces “it worked on my laptop” surprises.",
+      whatMatters:
+        "Finding failures before customers do — especially edge cases, permissions, and regressions.",
+      cursorHelps:
+        "Brainstorm test cases from requirements; scaffold or extend automated tests in CI; Bugbot adds another automated pass on PRs — QA still decides what “done” means.",
+    },
+    {
+      title: "DevOps / SRE / Platform",
+      role: "Owns shipping and reliability",
+      simple:
+        "Builds pipelines, monitoring, and infrastructure so deploys are safe and fast. On-call when production breaks — cares deeply about uptime and rollback.",
+      whatMatters:
+        "Safe deploys, fast recovery, and infra that’s documented and repeatable — not heroics at 2 a.m.",
+      cursorHelps:
+        "Read Terraform, Helm, GitHub Actions, and logs in context; small, reviewed edits across config files; Rules reduce risky suggestions (e.g. secrets, bypassing approvals).",
+    },
+    {
+      title: "Data engineer / Analytics",
+      role: "Owns data pipelines and warehouses",
+      simple:
+        "Moves data from apps into warehouses (e.g. Snowflake, BigQuery), keeps reports accurate, and helps the business trust dashboards — critical for data-heavy buyers.",
+      whatMatters:
+        "Trustworthy pipelines and dashboards — late or wrong data erodes confidence in the whole product story.",
+      cursorHelps:
+        "Draft and explain SQL, transforms, and pipeline code; explore schemas and job failures with Chat tied to repos and docs — still validate against production contracts.",
+    },
+    {
+      title: "Security (AppSec / cloud security)",
+      role: "Owns risk and policy",
+      simple:
+        "Sets rules for access, scanning (e.g. Snyk), and cloud posture (e.g. Wiz). Reviews exceptions and blocks releases that violate policy — a gate, not the enemy.",
+      whatMatters:
+        "Reducing real risk without blocking the business — clear policies, auditability, and fewer “we didn’t know that was exposed” moments.",
+      cursorHelps:
+        "Project and team Rules encode guardrails (PII, regions, no pasted secrets); AI speeds review prep and triage — policy and exceptions stay human-owned.",
+    },
   ],
 
   /**
@@ -241,11 +415,12 @@ window.SDLC_DATA = {
         "Engineering estimates feasibility and unknowns (sometimes with a short spike).",
         "Output is usually a thin plan: goals, scope boundaries, and rough timing — not a 200-page spec.",
       ],
-      techIds: ["linear", "miro", "notion", "slack"],
+      techIds: ["linear", "jira", "azure-devops", "miro", "notion", "slack"],
       connect: [
-        "Ideas from calls or CRM notes often land as epics or tickets in Linear so nothing disappears.",
+        "Ideas from calls or CRM notes often land as epics or tickets in Linear, Jira, or Azure Boards so nothing disappears.",
         "Miro captures messy early thinking; Notion or internal docs hold the cleaned-up summary.",
-        "Slack is where quick clarifications happen before work is formalized in Linear.",
+        "Slack is where quick clarifications happen before work is formalized in the tracker.",
+        "Enterprise buyers often standardize on Jira or Azure DevOps instead of Linear — same idea (backlog + history), different vendor.",
       ],
       compare: [
         "Vs “no tool”: without a tracker, priorities live in chat and get lost — Linear (or Jira/Azure Boards) creates a shared source of truth.",
@@ -285,9 +460,9 @@ window.SDLC_DATA = {
         "Legal, security, or compliance may add non-negotiables (data handling, regions, retention).",
         "Good requirements reduce rework — they’re cheaper to fix on paper than in production.",
       ],
-      techIds: ["linear", "notion", "figma", "slack"],
+      techIds: ["linear", "jira", "azure-devops", "notion", "figma", "slack"],
       connect: [
-        "Linear links stories to designs (Figma) and to longer write-ups in Notion.",
+        "Tickets in Linear, Jira, or Azure DevOps link to designs (Figma) and to longer write-ups in Notion.",
         "Slack resolves ambiguities; decisions should be copied back to Notion or the ticket so the record stays accurate.",
       ],
       compare: [
@@ -327,10 +502,12 @@ window.SDLC_DATA = {
         "Technical design: services, APIs, data stores, and failure handling — sometimes recorded in short ADR-style notes.",
         "Design balances speed, cost, risk, and maintainability.",
       ],
-      techIds: ["figma", "notion", "linear", "slack"],
+      techIds: ["figma", "notion", "linear", "slack", "postgresql", "mongodb", "snowflake", "bigquery"],
       connect: [
         "Figma links attach to Linear tickets so engineers open the right mockups.",
         "Architecture notes in Notion give sales and CS a place to read “how it works” without reading code.",
+        "Data design matters here: relational (PostgreSQL), document (MongoDB), caches (Redis), or managed stacks (e.g. Supabase) — each has tradeoffs for scale, compliance, and team skills.",
+        "For analytics-heavy products, teams also design how data lands in a warehouse (Snowflake, BigQuery) so reporting stays trustworthy.",
       ],
       compare: [
         "Vs building straight from a napkin: design reduces thrash and makes demos predictable.",
@@ -373,10 +550,11 @@ window.SDLC_DATA = {
         "Code is formatted, typed, and tested according to team standards.",
         "Feature flags often hide unfinished work from customers until it’s ready.",
       ],
-      techIds: ["cursor", "github", "docker", "slack"],
+      techIds: ["cursor", "github", "docker", "slack", "postgresql", "mongodb", "redis", "supabase"],
       connect: [
         "Cursor is the day-to-day editor; GitHub holds the code and PR conversation.",
         "Docker (or similar) keeps dev environments consistent so “works on my machine” is rare.",
+        "Applications talk to databases (PostgreSQL, MongoDB, etc.) and caches (Redis); teams on Supabase or similar ship faster by reusing auth and APIs.",
         "Slack for quick pairing questions; durable decisions still land in GitHub or docs.",
       ],
       compare: [
@@ -424,11 +602,13 @@ window.SDLC_DATA = {
         "Staging environments mimic production for final checks.",
         "Performance or security testing may run on a schedule or before big launches.",
       ],
-      techIds: ["gha", "github", "linear", "docker"],
+      techIds: ["gha", "github", "linear", "docker", "postgresql", "snyk"],
       connect: [
         "GitHub Actions triggers on each PR; results show up next to the review.",
         "Failed builds link back to Linear for traceability (“what release broke this?”).",
         "Docker ensures test runs match production-like dependencies.",
+        "Integration tests often hit a real database (e.g. Postgres in CI) so migrations and queries are validated before merge.",
+        "Security scanners like Snyk run in CI to catch vulnerable dependencies early — AppSec expects green or approved exceptions.",
       ],
       compare: [
         "Vs manual-only QA: automation scales; humans focus on exploratory and high-judgment testing.",
@@ -471,10 +651,14 @@ window.SDLC_DATA = {
         "Feature flags and canaries limit blast radius.",
         "Migrations and backwards compatibility are planned so deploys don’t take the site down.",
       ],
-      techIds: ["aws", "terraform", "gha", "github", "pagerduty"],
+      techIds: ["aws", "terraform", "gha", "github", "pagerduty", "vercel", "kubernetes", "snyk"],
       connect: [
         "Terraform defines AWS resources; GitHub stores those definitions and review history.",
         "GitHub Actions may deploy after checks pass; PagerDuty is ready if rollout triggers alerts.",
+        "Many product teams also ship web frontends and serverless APIs via Vercel (or Netlify, Cloudflare Pages) while databases stay on AWS or a managed provider — same SDLC, different hosting layer.",
+        "Large orgs often run services on Kubernetes (EKS, GKE, AKS) so many containers can scale and heal automatically — more moving parts, stronger platform teams.",
+        "Database migrations are planned with app releases so schema and code stay compatible (a common deploy risk).",
+        "Snyk (or similar) may block a deploy if a critical vulnerability appears in dependencies — security is part of the pipeline, not an afterthought.",
       ],
       compare: [
         "Vs hand-deployed servers: infrastructure-as-code is auditable and repeatable — stronger story for enterprise buyers.",
@@ -513,10 +697,13 @@ window.SDLC_DATA = {
         "Incidents get triaged, mitigated, and reviewed blamelessly.",
         "Customer feedback and support tickets reopen the loop — new items land in Linear.",
       ],
-      techIds: ["datadog", "pagerduty", "slack", "linear"],
+      techIds: ["datadog", "pagerduty", "slack", "linear", "postgresql", "redis", "snowflake", "bigquery", "wiz"],
       connect: [
         "Datadog alerts route to Slack and PagerDuty based on severity.",
         "Incidents spawn follow-up tickets in Linear; postmortems live in Notion (if your team uses it here).",
+        "Production issues often involve databases (slow Postgres queries, Redis memory pressure, connection limits) — observability ties application traces to infrastructure and data layers.",
+        "Analytics teams watch warehouses (Snowflake, BigQuery) for pipeline delays or bad data — “the dashboard is wrong” is an ops problem too.",
+        "Cloud security tools like Wiz help catch exposed resources or misconfigurations after architecture changes — especially in multi-account enterprises.",
       ],
       compare: [
         "Vs logging into servers one by one: observability platforms shorten mean time to detect and repair.",
@@ -793,6 +980,38 @@ window.SDLC_DATA = {
     { term: "Observability", def: "Using logs, metrics, and traces to understand production behavior." },
     { term: "Postmortem", def: "Blameless learning doc after an incident — what broke, how we fixed it, what we’ll improve." },
     { term: "Tech debt", def: "Shortcuts that speed you up now but slow you down later unless repaid." },
+    {
+      term: "PostgreSQL",
+      def: "A popular relational database — data in tables, queried with SQL. Often run as managed cloud Postgres (RDS, Neon, etc.).",
+    },
+    {
+      term: "Redis",
+      def: "Fast in-memory datastore used for caching, sessions, queues, and rate limiting — usually alongside a primary database.",
+    },
+    {
+      term: "Edge / frontend hosting",
+      def: "Platforms like Vercel or Netlify deploy web apps close to users, often with preview deployments per PR — complementary to cloud databases and APIs.",
+    },
+    {
+      term: "Kubernetes",
+      def: "Software that schedules and runs many containers across servers — restarts failed apps and scales traffic. Clouds offer managed versions (EKS, GKE, AKS).",
+    },
+    {
+      term: "Jira",
+      def: "Atlassian’s work-tracking tool (issues, epics, boards). Common in enterprises; similar purpose to Linear with heavier workflow and reporting.",
+    },
+    {
+      term: "Snowflake / BigQuery",
+      def: "Cloud data warehouses for analytics — SQL over huge datasets. Not the same as your app’s live database; used for BI, reporting, and ML features.",
+    },
+    {
+      term: "Snyk",
+      def: "Security product that finds vulnerable open-source packages and sometimes code issues — usually wired into CI so teams fix issues before release.",
+    },
+    {
+      term: "Wiz",
+      def: "Cloud security platform that discovers resources and misconfigurations across clouds — helps security teams prioritize real risk, not just checklists.",
+    },
   ],
 
   approaches: [

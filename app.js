@@ -15,6 +15,7 @@
   const views = {
     welcome: document.getElementById("view-welcome"),
     basics: document.getElementById("view-basics"),
+    personas: document.getElementById("view-personas"),
     tech: document.getElementById("view-tech"),
     competitors: document.getElementById("view-competitors"),
     sdlc: document.getElementById("view-sdlc"),
@@ -85,6 +86,10 @@
         if (first) first.setAttribute("aria-pressed", "true");
         showPhase(data.phases[0]);
       }
+    }
+
+    if (name === "personas") {
+      initPersonas();
     }
   }
 
@@ -626,6 +631,70 @@
     });
   }
 
+  /* Team personas */
+  function initPersonas() {
+    const grid = document.getElementById("personas-grid");
+    const h2 = document.getElementById("personas-heading");
+    const lead = document.getElementById("personas-lead");
+    if (!grid) return;
+    const page = data.personasPage || {};
+    if (h2) h2.textContent = page.title || "Who builds software?";
+    if (lead) {
+      lead.textContent =
+        page.lead ||
+        "Personas are the typical roles on a software team. Titles vary by company, but the jobs below show up everywhere.";
+    }
+    const list = Array.isArray(data.devPersonas) ? data.devPersonas : [];
+    grid.replaceChildren();
+    if (list.length === 0) {
+      const note = document.createElement("p");
+      note.className = "persona-empty";
+      note.textContent =
+        "No personas loaded. Ensure data.js defines devPersonas (array) and reload without cache.";
+      grid.appendChild(note);
+      return;
+    }
+    list.forEach(function (p) {
+      const card = document.createElement("article");
+      card.className = "persona-card";
+      const title = document.createElement("h3");
+      title.className = "persona-title";
+      title.textContent = p.title || "";
+      const role = document.createElement("p");
+      role.className = "persona-role";
+      role.textContent = p.role || "";
+      const body = document.createElement("p");
+      body.className = "persona-body";
+      body.textContent = p.simple || "";
+      card.appendChild(title);
+      card.appendChild(role);
+      card.appendChild(body);
+
+      if (p.whatMatters) {
+        const wmLabel = document.createElement("h4");
+        wmLabel.className = "persona-section-title";
+        wmLabel.textContent = "What matters most";
+        const wm = document.createElement("p");
+        wm.className = "persona-section-text";
+        wm.textContent = p.whatMatters;
+        card.appendChild(wmLabel);
+        card.appendChild(wm);
+      }
+      if (p.cursorHelps) {
+        const chLabel = document.createElement("h4");
+        chLabel.className = "persona-section-title persona-section-title--cursor";
+        chLabel.textContent = "How Cursor helps";
+        const ch = document.createElement("p");
+        ch.className = "persona-section-text";
+        ch.textContent = p.cursorHelps;
+        card.appendChild(chLabel);
+        card.appendChild(ch);
+      }
+
+      grid.appendChild(card);
+    });
+  }
+
   /* Tech table */
   function initTechTable() {
     const tbody = document.getElementById("tech-table-body");
@@ -750,6 +819,7 @@
   setTitle();
   initWelcome();
   initBasics();
+  initPersonas();
   initTechTable();
   initCompetitorsView();
   showView("welcome");
